@@ -1,0 +1,17 @@
+<div>
+  <div class="landingnav row text-right">
+    <a href="#/" id="signuplink">Sign-up now!</a>
+  </div>
+  <div class="row" ng-include="'shared/partials/landingheader.html'"></div>
+  <div class="row loginform">
+    <div class="large-6 medium-9 medium-centered columns">
+      <h2>Login</h2>
+      <form name="loginForm" novalidate class="css-form" role="form">
+        <input type="email" placeholder="Email" ng-model="user.email" nane="email" required /><br />
+        <input type="password" placeholder="Password" ng-model="user.password" name="password" required ><br/>
+        <div class="text-center"><input type="submit" value="Ok" class="button small radius pinkflower" data-ng-disabled="!user.email+!user.password"
+       type="submit"/></div>
+      </form>
+    </div>
+  </div>
+<div>

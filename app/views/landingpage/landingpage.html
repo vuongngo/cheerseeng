@@ -1,0 +1,21 @@
+<div class="landing-bg">
+  <div class="landingnav row text-right">
+    <a href="#/login" id="loginlink">Welcome back</a>
+  </div>
+  <div class="row" ng-include="'shared/partials/landingheader.html'"></div>
+  <div class="row regform">
+    <div class="large-6 medium-9 medium-centered columns">
+      <h2>Sign up</h2>
+      <form novalidate class="css-form">
+        Name: <input type="text" ng-model="user.name" required /><br />
+        E-mail: <input type="email" ng-model="user.email" required /><br />
+        Gender: <input type="radio" ng-model="user.gender" value="male" />male
+        <input type="radio" ng-model="user.gender" value="female" />female<br />
+        <input type="button" ng-click="reset()" value="Reset" />
+        <input type="submit" ng-click="update(user)" value="Save" />
+      </form>
+    </div>
+  </div>
+  <div class="row text-center">
+    <h5>Just For Fun version</h5>
+</div>
