@@ -5,5 +5,8 @@ angular.module('myApp', [
   'routes',
   'landingpage',
   'login',
+  'authentication',
+  'localstorage',
+  'currentuser',
   'mm.foundation'
 ])

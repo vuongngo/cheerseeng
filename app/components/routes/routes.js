@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('routes', ['ui.router'])
-  .config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise("/");
+  .config(function($stateProvider, $urlRouterProvider, AccessLevels) {
+
     $stateProvider
-    .state('signup', {
+    .state('anon', {
       url: '/',
-      templateUrl: '/app/components/landingpage/landingpage.html',
-      controller: 'LandingpageCtrl'
+      templateUrl: '/app/views/landingpage/landingpage.html',
+      controller: 'SignupCtrl'
     })
     .state('login', {
       url: '/login',
@@ -18,4 +18,5 @@ angular.module('routes', ['ui.router'])
       url: '/home',
       templateUrl: '/app/views/feed/homefeed.html',
     });
+    $urlRouterProvider.otherwise("/");
   })
