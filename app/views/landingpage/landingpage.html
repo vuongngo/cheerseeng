@@ -8,18 +8,18 @@
       <h3>Contest For a Date</h3>
     </div>
   </div>
-  <div class="row regform" ng-controller="LandingpageCtrl">
+  <div class="row regform">
     <div class="large-6 medium-9 medium-centered columns">
       <h2>Sign up</h2>
       <form name="regForm" novalidate class="css-form">
-        <input type="text" placeholder="Name" ng-model="user.name" required /><br />
+        <input type="text" placeholder="Name" ng-model="reg.user.name" required /><br />
         <label style="color: #cf6874" ng-show="regForm.userEmail.$error.uniqueEmail">You might signup with this email!</label>
-        <input type="email" placeholder="Email" ng-model="user.email" name="userEmail" required unique-email/><br />
-        <input type="password" placeholder="Password" ng-model="user.password" name="password" required ><br/>
-        <input type="password" placeholder="Confirm password" ng-model="user.password_confirmation" name="confirmPassword" required ><br/>
-        <span>Gender:</span> <input type="radio" ng-model="user.gender" value="male" id="male" /><span>Male</span>
-        <input type="radio" ng-model="user.gender" value="female" /><span>Female</span><br />
-        <div class="text-center"><input type="submit" ng-click="update(user)" value="Lets rock" class="button small radius pinkflower" data-ng-disabled="!user.gender+!user.name+!user.email+!user.password+!user.password_confirmation+regForm.userEmail.$error.uniqueEmail"
+        <input type="email" placeholder="Email" ng-model="reg.user.email" name="userEmail" required unique-email/><br />
+        <input type="password" placeholder="Password" ng-model="reg.user.password" name="password" required ><br/>
+        <input type="password" placeholder="Confirm password" ng-model="reg.user.password_confirmation" name="confirmPassword" required ><br/>
+        <span>Gender:</span> <input type="radio" ng-model="reg.user.gender" value="male" id="male" /><span>Male</span>
+        <input type="radio" ng-model="reg.user.gender" value="female" /><span>Female</span><br />
+        <div class="text-center"><input type="submit" ng-click="register()" value="Lets rock" class="button small radius pinkflower" data-ng-disabled="!reg.user.gender+!reg.user.name+!reg.user.email+!reg.user.password+!reg.user.password_confirmation+regForm.userEmail.$error.uniqueEmail"
        type="submit"/></div>
       </form>
     </div>

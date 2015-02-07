@@ -8,8 +8,8 @@ angular.module('login', ['validation.match'])
 		$scope.login = function() {
 			if($scope.loginForm.$valid) {
 				$scope.errors = [];
-				Auth.login($scope.user).success(function(result) {
-					$state.go('feeds');
+				Auth.login($scope.sign).success(function(result) {
+					$state.go('user.feeds');
 				}).error(function(err) {
 					$scope.errors.push(err);
 				});

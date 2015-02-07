@@ -4,7 +4,7 @@ angular.module('landingpage', [])
 
 	.controller('SignupCtrl', function($scope, $state, Auth) {
 		$scope.register = function() {
-			Auth.register($scope.user).then(function() {
+			Auth.register($scope.reg).then(function() {
 				$state.go('anon.home');
 			});
 		};

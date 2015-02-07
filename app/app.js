@@ -6,7 +6,17 @@ angular.module('myApp', [
   'landingpage',
   'login',
   'authentication',
-  'localstorage',
+  'storageservice',
   'currentuser',
+  // 'accesslevels',
   'mm.foundation'
 ])
+	.run(function($rootScope, $state, Auth) {
+		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+			if (!Auth.authorize(toState.data.access)) {
+				event.preventDefault();
+
+				$state.go('anon.login');
+			}
+		});
+	});

@@ -1,9 +1,10 @@
 'use strict';
 
-angular.module('authentication', [])
+angular.module('authentication', ['storageservice'])
 	.factory('Auth', function($http, LocalService, AccessLevels) {
+		var url = 'http://api.cheersee.dev'
 		function checkTokenStatus(token) {
-			$http.get('/auth/token_status?token' + token);
+			$http.get(url + '/checktoken?token=' + token);
 		}
 
 		var token = LocalService.get('auth_token');
@@ -25,9 +26,9 @@ angular.module('authentication', [])
 				return LocalService.get('auth_token');
 			},
 			login: function(credentials) {
-				var login = $http.post('/sessions', credentials);
+				var login = $http.post(url + '/sessions', credentials);
 				login.success(function(result) {
-					LocalService.get('auth_token', JSON.stringify(result));
+					LocalService.set('auth_token', JSON.stringify(result.auth_token));
 				});
 				return login;
 			},
@@ -36,9 +37,9 @@ angular.module('authentication', [])
 			},
 			register: function(formData) {
 				LocalService.unset('auth_token');
-				var register = $http.post('/users', formData);
+				var register = $http.post(url + '/users', formData);
 				register.success(function(result) {
-					localService.set('auth_token', JSON.stringify(result));
+					LocalService.set('auth_token', JSON.stringify(result.auth_token));
 				});
 				return register;
 			}
@@ -51,8 +52,8 @@ angular.module('authentication', [])
 		return {
 			request: function(config) {
 				var token;
-				if(localService.get('auth_token')) {
-					token = angular.fromJson(localService.get('auth_token')).token;
+				if(LocalService.get('auth_token')) {
+					token = angular.fromJson(LocalService.get('auth_token')).token;
 				}
 				if (token) {
 					config.headers.Authorization = 'Bearer' + token;

@@ -2,6 +2,6 @@
 
 angular.module('accesslevels', [])
 	.constant('AccessLevels', {
-		anon: 0;
-		user: 1;
+		anon: 0,
+		user: 1
 	});
