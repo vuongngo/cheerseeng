@@ -6,7 +6,7 @@ angular.module('routes', ['ui.router'])
     $stateProvider
     .state('signup', {
       url: '/',
-      templateUrl: '/app/views/landingpage/landingpage.html',
+      templateUrl: '/app/components/landingpage/landingpage.html',
       controller: 'LandingpageCtrl'
     })
     .state('login', {

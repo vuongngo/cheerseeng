@@ -1,13 +1,6 @@
 'use strict';
 
-angular.module('myApp.landingpage', ['ngRoute', 'validation.match'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/', {
-    templateUrl: '/app/components/landingpage/landingpage.html',
-    controller: 'LandingpageCtrl'
-  });
-}])
+angular.module('landingpage', [])
 
 .controller('LandingpageCtrl', ['$scope', function($scope) {
 }])
