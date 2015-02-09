@@ -8,7 +8,8 @@ angular.module('myApp', [
   'authentication',
   'storageservice',
   'currentuser',
-  // 'accesslevels',
+  'feeds',
+  'allfeeds',
   'mm.foundation'
 ])
 	.run(function($rootScope, $state, Auth) {

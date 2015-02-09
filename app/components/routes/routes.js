@@ -11,7 +11,7 @@ angular.module('routes', ['ui.router', 'accesslevels'])
           access: AccessLevels.anon
         }
       })
-      .state('anon.landingpage', {
+      .state('anon.home', {
         url: '/',
         templateUrl: '/app/views/landingpage/landingpage.html',
         controller: 'SignupCtrl'
@@ -32,7 +32,8 @@ angular.module('routes', ['ui.router', 'accesslevels'])
       })
       .state('user.feeds', {
         url: '/feeds',
-        templateUrl: '/app/views/feed/homefeed.html',
+        controller: 'AllFeedsCtrl',
+        templateUrl: '/app/views/feeds/allfeeds.html',
       });
     $urlRouterProvider.otherwise("/");
   });

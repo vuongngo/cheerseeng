@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('authentication', ['storageservice'])
+angular.module('authentication', [])
 	.factory('Auth', function($http, LocalService, AccessLevels) {
 		var url = 'http://api.cheersee.dev'
 		function checkTokenStatus(token) {
@@ -10,7 +10,7 @@ angular.module('authentication', ['storageservice'])
 		var token = LocalService.get('auth_token');
 
 		if(token) {
-			token = angular.fromJson(LocalService.get('auth_token')).token;
+			token = angular.fromJson(token);
 			checkTokenStatus(token);
 		}
 
@@ -53,10 +53,10 @@ angular.module('authentication', ['storageservice'])
 			request: function(config) {
 				var token;
 				if(LocalService.get('auth_token')) {
-					token = angular.fromJson(LocalService.get('auth_token')).token;
+					token = angular.fromJson(LocalService.get('auth_token'));
 				}
 				if (token) {
-					config.headers.Authorization = 'Bearer' + token;
+					config.headers.Authorization = 'Bearer ' + token;
 				}
 				return config;
 			},
