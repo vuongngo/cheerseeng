@@ -25,7 +25,7 @@ angular.module('routes', ['ui.router', 'accesslevels'])
     $stateProvider
       .state('user', {
         abstract: true,
-        template: '<ui-view/>',
+        templateUrl: '/app/shared/partials/topbar.html',
         data: {
           access: AccessLevels.user
         }

@@ -1,4 +1,9 @@
 /*= require foundation */
+@font-face {
+    font-family: montez;
+    src: url("../font/montez/Montez-Regular.ttf");
+}
+/*Landingpage + login*/
 .landing-bg{
 	background: #E80C18;
 }
@@ -43,4 +48,76 @@ background-color: #B20900;
 
 .css-form input.ng-valid.ng-touched {
 background-color: #FFFDB7;
+}
+/*User pages*/
+.main-section {
+	padding: 0.7em;
+	background-color: #FFE4EA;
+}
+.feed {
+	background-color: #ffffff;
+}
+.avatar-container {
+}
+.circular {
+	width: 3em;
+	height: 3em;
+	margin: 7px;
+	border-radius: 1.5em;
+	-webkit-border-radius: 1.5em;
+	-moz-border-radius: 1.5em;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}
+.image-album > img {
+	width: 33.33%;
+	height: 5em;
+	border-right: solid 1px;
+	border-bottom: solid 1px;
+}
+.image-album > :first-child {
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+.feed-comment {
+	font-size: 1.1em;
+}
+.feed-comment > li {
+	margin: 0.5em 0.5em 0em 0.5em;
+}
+.post-label {
+	font-size: 0.7em;
+	color: #505050;
+	padding-top: 0.5em;
+}
+/*Top bar*/
+.top-name {
+	background: url("../images/logo.png");
+	background-size: 30px 30px;
+	background-position: center;
+	background-repeat: no-repeat;
+	font-family: montez;
+}
+/*Bottom bar*/
+.bottom-bar {
+	background-color: #000000;
+	position: fixed;
+    bottom: 0; 
+    width: 100%;
+}
+.bottom-bar div {
+	width: 24em;
+	margin: auto;
+}
+.bottom-bar ul {
+    margin: auto;
+    padding: 2px;	
+}
+.bottom-bar div {
+	color: #505050;
+}
+.bottom-bar i {
+	font-size: 150%;
 }
