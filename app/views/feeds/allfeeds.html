@@ -1,20 +1,21 @@
-<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+<ul infinite-scroll="moreFeeds()" infinite-scroll-disabled="busy" infinite-scroll-distance='2' class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <li ng-repeat="feed in feeds" class="feed">
-  	<div class="row">
-  		<div class="small-4 columns"><img class="circular" ng-src="{{feed.u.avatar}}"/></div>
-  		<div class="small-8 columns">
-  				<p class="text-right post-label" ng-show="feed.point"><b>Point:</b>{{ feed.point }}</p>
-  				<p class="text-right post-label" ng-show="feed.ended_at"><b>Countdown:</b> <timer end-time="feed.ended_at*1000"> {{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer></p>
-  		</div>
-  	</div>
+    <div class="row">
+      <div class="small-4 columns"><img class="circular" ng-src="{{feed.u.avatar}}"/></div>
+      <div class="small-8 columns">
+          <p class="text-right post-label" ng-show="feed.point"><b>Point:</b>{{ feed.point }}</p>
+          <p class="text-right post-label" ng-show="feed.ended_at"><b>Countdown:</b> <timer end-time="feed.ended_at*1000"> {{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer></p>
+      </div>
+    </div>
           <p> {{ feed.post }}</p>
-  	<div class="image-album" >
-  		<img ng-repeat="pic in feed.pic" ng-src="{{ pic }}"/>
-  	</div>
-  	<ul class="inline-list feed-comment">
-  		<li><i class="fa fa-pencil-square-o"> Commend</i></li>
-  		<li><i class="fa fa-comments-o"></i></li>
-  		<li><i class="fa fa-heart"></i></li>
-  	</ul>
+    <div class="image-album" >
+      <img ng-repeat="pic in feed.pic" ng-src="{{ pic }}"/>
+    </div>
+    <ul class="inline-list feed-comment">
+      <li><i class="fa fa-pencil-square-o"> Commend</i></li>
+      <li><i class="fa fa-comments-o"></i></li>
+      <li><i class="fa fa-heart"></i></li>
+    </ul>
   </li>
 </ul>
+

@@ -4,8 +4,8 @@ angular.module('feeds', [])
 	.factory('Feeds', function($http) {
 		var url = 'http://api.cheersee.dev'
 		return {
-			getAllFeeds: function() {
-				return $http.get(url + '/feeds');
+			getAllFeeds: function(page) {
+				return $http.get(url + '/feeds?page=' + page);
 			},
 			getUserFeeds: function() {
 				return $http.get(url + '/feeds/' + user.id);

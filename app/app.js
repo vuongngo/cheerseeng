@@ -11,7 +11,8 @@ angular.module('myApp', [
   'feeds',
   'allfeeds',
   'mm.foundation',
-  'timer'
+  'timer',
+  'infinite-scroll'
 ])
 	.run(function($rootScope, $state, Auth) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
