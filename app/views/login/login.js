@@ -9,7 +9,7 @@ angular.module('login', ['validation.match'])
 			if($scope.loginForm.$valid) {
 				$scope.errors = [];
 				Auth.login($scope.sign).success(function(result) {
-					$state.go('user.feeds');
+					$state.go('user.allfeeds');
 				}).error(function(err) {
 					$scope.errors.push(err);
 				});

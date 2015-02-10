@@ -7,8 +7,8 @@ angular.module('feeds', [])
 			getAllFeeds: function(page) {
 				return $http.get(url + '/feeds?page=' + page);
 			},
-			getUserFeeds: function() {
-				return $http.get(url + '/feeds/' + user.id);
+			getUserFeeds: function(stateParams, page) {
+				return $http.get(url + '/feeds/' + stateParams + '/?page=' + page);
 			},
 			getRelatedFeeds: function() {
 				return $http.get(url + '/feeds/' + user.id +'/' + contest.id);

@@ -30,10 +30,16 @@ angular.module('routes', ['ui.router', 'accesslevels'])
           access: AccessLevels.user
         }
       })
-      .state('user.feeds', {
+      .state('user.allfeeds', {
         url: '/feeds',
         controller: 'AllFeedsCtrl',
         templateUrl: '/app/views/feeds/allfeeds.html',
+      })
+      .state('user.userfeeds', {
+        url: '/:id',
+        controller: 'UserFeedsCtrl',
+        templateUrl: '/app/views/feeds/allfeeds.html',
       });
+
     $urlRouterProvider.otherwise("/");
   });

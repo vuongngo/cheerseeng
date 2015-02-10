@@ -10,6 +10,7 @@ angular.module('myApp', [
   'currentuser',
   'feeds',
   'allfeeds',
+  'userfeeds',
   'mm.foundation',
   'timer',
   'infinite-scroll'
