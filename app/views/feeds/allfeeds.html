@@ -4,7 +4,7 @@
   		<div class="small-4 columns"><img class="circular" ng-src="{{feed.u.avatar}}"/></div>
   		<div class="small-8 columns">
   				<p class="text-right post-label" ng-show="feed.point"><b>Point:</b>{{ feed.point }}</p>
-  				<p class="text-right post-label" ng-show="feed.ended_at"><b>Ended at:</b> {{ feed.ended_at }}</p>
+  				<p class="text-right post-label" ng-show="feed.ended_at"><b>Countdown:</b> <timer end-time="feed.ended_at*1000"> {{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer></p>
   		</div>
   	</div>
           <p> {{ feed.post }}</p>

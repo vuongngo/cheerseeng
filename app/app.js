@@ -10,7 +10,8 @@ angular.module('myApp', [
   'currentuser',
   'feeds',
   'allfeeds',
-  'mm.foundation'
+  'mm.foundation',
+  'timer'
 ])
 	.run(function($rootScope, $state, Auth) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
