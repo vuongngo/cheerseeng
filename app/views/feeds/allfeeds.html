@@ -15,7 +15,10 @@
       <li><i class="fa fa-pencil-square-o"> Commend</i></li>
       <li><i class="fa fa-comments-o"></i></li>
       <li><i class="fa fa-heart"></i></li>
-      <li class="right"><i class="fa fa-external-link"></i></li>
+      <li class="right">
+        <a href="/app/#/feed/{{feed._id.$oid}}" ng-if="feed.rule"><i class="fa fa-external-link"></i></a>
+        <a href="/app/#/feed/{{feed.contest_id.$oid}}" ng-if="feed.point"><i class="fa fa-external-link"></i></a>
+      </li>
     </ul>
   </li>
 </ul>

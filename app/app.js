@@ -11,6 +11,7 @@ angular.module('myApp', [
   'feeds',
   'allfeeds',
   'userfeeds',
+  'relatedfeeds',
   'mm.foundation',
   'timer',
   'infinite-scroll'

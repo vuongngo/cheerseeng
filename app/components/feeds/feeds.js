@@ -10,8 +10,8 @@ angular.module('feeds', [])
 			getUserFeeds: function(stateParams, page) {
 				return $http.get(url + '/feeds/' + stateParams + '/?page=' + page);
 			},
-			getRelatedFeeds: function() {
-				return $http.get(url + '/feeds/' + user.id +'/' + contest.id);
+			getRelatedFeeds: function(stateParams, page) {
+				return $http.get(url + '/feed/' + stateParams +'/?page=' + page);
 			}
 		};
 	});
