@@ -14,6 +14,7 @@ angular.module('myApp', [
   'relatedfeeds',
   'mm.foundation',
   'timer',
+  'userinfo',
   'infinite-scroll'
 ])
 	.run(function($rootScope, $state, Auth) {

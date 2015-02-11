@@ -12,6 +12,7 @@ angular.module('userfeeds', [])
 			$scope.busy = true;
 			Feeds.getUserFeeds($stateParams.id ,page).success(function(result) {
 				$scope.feeds = $scope.feeds.concat(result.feeds);
+				$scope.user = result.user;
 				total_pages = result.meta.pagination.total_pages;
 				if (page <= result.meta.pagination.total_pages) {
 					$scope.busy = false;} else {

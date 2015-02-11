@@ -6,7 +6,7 @@
       </section>
 
       <section class="middle tab-bar-section">
-        <h1><span class="top-name" style="font-size: 1.5em">Cheersee</span> <i class="fa fa-search" style="margin-left: 1em; font-size: 130%"></i></h1>
+        <h1><a ng-href="/app/#/feeds" style="color:#ffffff"><span class="top-name" style="font-size: 1.5em">Cheersee</span></a> <i class="fa fa-search" style="margin-left: 1em; font-size: 130%"></i></h1>
       </section>
 
       <section class="right-small">
@@ -17,7 +17,7 @@
     <aside class="left-off-canvas-menu">
       <ul class="off-canvas-list">
         <li><label><i class="fa fa-home fa-2x"></i></label></li>
-        <li class="text-center"><img src="assets/images/logo.png" alt="logo" style="width:100px;height:100px"></li>
+        <li class="text-center"><div class="small-4 columns"><a href="/app/#/{{user._id.$oid}}"><img class="circular" ng-src="{{user.profile.avatar}}"/></a></div></li>
         <li><a href="#">...</a></li>
       </ul>
     </aside>

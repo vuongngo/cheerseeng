@@ -25,7 +25,9 @@ angular.module('routes', ['ui.router', 'accesslevels'])
     $stateProvider
       .state('user', {
         abstract: true,
+        // Bugs, refresh leads to homepage
         templateUrl: '/app/shared/partials/topbar.html',
+        controller: 'UserInfoCtrl',
         data: {
           access: AccessLevels.user
         }

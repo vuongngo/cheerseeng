@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="feed large-8 medium-10 small-centered columns">
+    <div class="row">
+      <div class="small-4 columns">
+        <p><img ng-src="{{user.profile.avatar}}"/>
+        <h3>{{user.name}}</h3>
+      </div>
+      <div class="small-8 columns">
+        <p><b>Gender:</b> {{user.gender}}</p>
+        <p><b>Age:</b> {{user.age}}</p>
+        <p><b>Interest:</b> {{user.interest}}</p>
+        <p><b>Location:</b> {{user.location}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<ul infinite-scroll="moreFeeds()" infinite-scroll-disabled="busy" infinite-scroll-distance='2' class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <li ng-repeat="feed in feeds" class="feed">
+    <div class="row">
+      <div class="small-4 columns"><a href="/app/#/{{feed.u.u_id}}"><img class="circular" ng-src="{{feed.u.avatar}}"/></a></div>
+      <div class="small-8 columns">
+          <p class="text-right post-label" ng-show="feed.point"><b>Point:</b>{{ feed.point }}</p>
+          <p class="text-right post-label" ng-show="feed.ended_at"><b>Countdown:</b> <timer end-time="feed.ended_at*1000"> {{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer></p>
+      </div>
+    </div>
+          <p> {{ feed.post }}</p>
+    <div class="image-album" >
+      <img ng-repeat="pic in feed.pic" ng-src="{{ pic }}"/>
+    </div>
+    <ul class="inline-list feed-comment">
+      <li><i class="fa fa-pencil-square-o"> Commend</i></li>
+      <li><i class="fa fa-comments-o"></i></li>
+      <li><i class="fa fa-heart"></i></li>
+      <li class="right">
+        <a href="/app/#/feed/{{feed._id.$oid}}" ng-if="feed.rule"><i class="fa fa-external-link"></i></a>
+        <a href="/app/#/feed/{{feed.contest_id.$oid}}" ng-if="feed.point"><i class="fa fa-external-link"></i></a>
+      </li>
+    </ul>
+  </li>
+</ul>

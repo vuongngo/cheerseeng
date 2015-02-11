@@ -29,17 +29,20 @@ angular.module('authentication', [])
 				var login = $http.post(url + '/sessions', credentials);
 				login.success(function(result) {
 					LocalService.set('auth_token', JSON.stringify(result.auth_token));
+					LocalService.set('user_id', JSON.stringify(result._id.$oid));
 				});
 				return login;
 			},
 			logout: function() {
 				LocalService.unset('auth_token');
+				LocalService.unset('user_id');
 			},
 			register: function(formData) {
 				LocalService.unset('auth_token');
 				var register = $http.post(url + '/users', formData);
 				register.success(function(result) {
 					LocalService.set('auth_token', JSON.stringify(result.auth_token));
+					LocalService.set('user_id', JSON.stringify(result._id.$oid));
 				});
 				return register;
 			}
