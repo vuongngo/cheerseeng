@@ -40,7 +40,7 @@ angular.module('routes', ['ui.router', 'accesslevels'])
       .state('user.userfeeds', {
         url: '/:id',
         controller: 'UserFeedsCtrl',
-        templateUrl: '/app/views/feeds/allfeeds.html',
+        templateUrl: '/app/views/feeds/userfeeds.html',
       })
       .state('user.relatedfeeds', {
         url: '/feed/:id',
@@ -48,5 +48,5 @@ angular.module('routes', ['ui.router', 'accesslevels'])
         templateUrl: '/app/views/feeds/relatedfeeds.html',
       });
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/feeds");
   });
