@@ -15,5 +15,8 @@ angular.module('userinfo', [])
 			getUser: function() {
 				return $http.get(url + '/users/' + uid);
 			},
+			updateUser: function(pid, formData) {
+				return $http.put(url + '/profiles/' + pid, formData);
+			},
 		};
 	});

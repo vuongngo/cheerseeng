@@ -1,8 +1,9 @@
 'user strict';
 
-angular.module('userfeeds', [])
-	.controller('UserFeedsCtrl', function($scope, Feeds, LocalService, $stateParams) {
+angular.module('userfeeds', ['userinfo'])
+	.controller('UserFeedsCtrl', function($scope, Feeds, Userinfos, LocalService, $stateParams) {
 		$scope.busy = false;
+		$scope.edit = {'age': true, 'interest': true, 'location': true}
 		$scope.feeds = [];
 		var page = 0;
 		$scope.$watchCollection('feeds', function(newValue, oldValue) {
@@ -19,9 +20,17 @@ angular.module('userfeeds', [])
 					$scope.busy = true;
 					}
 			}).error(function(res) {
-				if(res.errors === 'Not authenticated') {
-				LocalService.unset('auth_token');
-				};
+				$scope.errors = res;
 			});
+		};
+		$scope.updateProfile = function() {
+			Userinfos.updateUser($scope.user.profile._id.$oid, $scope.user.profile).success(function(result) {
+				$scope.profile = result;
+				$scope.edit.age = true;
+				$scope.edit.interest = true;
+				$scope.edit.location = true;
+			}).error(function(res) {
+				$scope.errors = res;
+			})
 		};
 	});

@@ -70,6 +70,12 @@ background-color: #FFFDB7;
 	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 	}
+.c-large {
+	width: 6em;
+	height: 6em;
+	margin: 14px;
+	border-radius: 3em;
+}
 .image-album > img {
 	width: 33.33%;
 	height: 5em;
