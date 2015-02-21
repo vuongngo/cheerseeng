@@ -32,6 +32,11 @@ angular.module('routes', ['ui.router', 'accesslevels'])
           access: AccessLevels.user
         }
       })
+      .state('user.allcontests', {
+        url: '/contests',
+        controller: 'AllContestsCtrl',
+        templateUrl: '/app/views/contests/allcontests.html',
+      })
       .state('user.allfeeds', {
         url: '/feeds',
         controller: 'AllFeedsCtrl',
