@@ -1,7 +1,7 @@
 'user strict';
 
 angular.module('allcontests', [])
-	.controller('AllContestsCtrl', function($scope, Contests, LocalService, $stateParams) {
+	.controller('AllContestsCtrl', function($scope, Contests, LocalService) {
 		$scope.busy = false;
 		$scope.contests = [];
 		var page = 0;
@@ -13,7 +13,7 @@ angular.module('allcontests', [])
 			Contests.getAllContests(page).success(function(result) {
 				$scope.contests = $scope.contests.concat(result.contests);
 				total_pages = result.meta.pagination.total_pages;
-				if (page <= result.meta.pagination.total_pages) {
+				if (page < result.meta.pagination.total_pages) {
 					$scope.busy = false;} else {
 						$scope.busy = true;
 					}

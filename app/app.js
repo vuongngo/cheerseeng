@@ -17,7 +17,10 @@ angular.module('myApp', [
   'userinfo',
   'infinite-scroll',
   'contests',
-  'allcontests'
+  'allcontests',
+  'participations',
+  'allparticipations',
+  'createcontest'
 ])
 	.run(function($rootScope, $state, Auth) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {

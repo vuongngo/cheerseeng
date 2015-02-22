@@ -1,27 +1,25 @@
-'user strict';
+'use strict';
 
-angular.module('relatedfeeds', [])
-	.controller('RelatedFeedsCtrl', function($scope, Feeds, LocalService, $stateParams) {
+angular.module('allparticipations', [])
+	.controller('AllParticipationsCtrl', function($scope, Participations, LocalService) {
 		$scope.busy = false;
 		$scope.participations = [];
 		var page = 0;
 		$scope.$watchCollection('participations', function(newValue, oldValue) {
-	  		page = page + 1;
+			page = page + 1;
 		});
 		$scope.moreParticipations = function() {
 			$scope.busy = true;
-			Feeds.getRelatedFeeds($stateParams.id ,page).success(function(result) {
-				$scope.contest = result.contest[0];
+			Participations.getAllParticipations(page).success(function(result) {
 				$scope.participations = $scope.participations.concat(result.participations);
-				total_pages = result.meta.pagination.total_pages;
 				if (page < result.meta.pagination.total_pages) {
 					$scope.busy = false;} else {
-					$scope.busy = true;
+						$scope.busy = true;
 					}
-			}).error(function(res) {
+				}).error(function(res) {
 				if(res.errors === 'Not authenticated') {
-				LocalService.unset('auth_token');
+					LocalService.unset('auth_token');
 				};
 			});
 		};
-	});
+	})

@@ -37,6 +37,16 @@ angular.module('routes', ['ui.router', 'accesslevels'])
         controller: 'AllContestsCtrl',
         templateUrl: '/app/views/contests/allcontests.html',
       })
+      .state('user.createcontests', {
+        url: '/contest',
+        controller: 'CreateContestCtrl',
+        templateUrl: '/app/views/contests/create_contest.html',
+      })
+      .state('user.allparticipations', {
+        url: '/participations',
+        controller: 'AllParticipationsCtrl',
+        templateUrl: '/app/views/participations/allparticipations.html',
+      })
       .state('user.allfeeds', {
         url: '/feeds',
         controller: 'AllFeedsCtrl',
