@@ -4,7 +4,8 @@
       <div class="small-4 columns"><a href="/app/#/{{feed.u.u_id}}"><img class="circular" ng-src="{{feed.u.avatar}}"/></a></div>
       <div class="small-8 columns">
           <p class="text-right post-label" ng-show="feed.point"><b>Point:</b>{{ feed.point }}</p>
-          <p class="text-right post-label" ng-show="feed.ended_at"><b>Countdown:</b> <timer end-time="feed.ended_at*1000"> {{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer></p>
+          <p class="text-right post-label" ng-show="feed.ended_at > Date.getTime()"><b>Countdown:</b> <timer end-time="feed.ended_at"> {{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer></p>
+          <p class="text-right post-label" ng-show="feed.ended_at < Date.getTime()">Ended</p>
       </div>
     </div>
           <p> {{ feed.post }}</p>
@@ -16,8 +17,11 @@
       <li><i class="fa fa-comments-o"></i></li>
       <li><i class="fa fa-heart"></i></li>
       <li class="right">
-        <a href="/app/#/feed/{{feed._id.$oid}}" ng-if="feed.rule"><i class="fa fa-external-link"></i></a>
-        <a href="/app/#/feed/{{feed.contest_id.$oid}}" ng-if="feed.point"><i class="fa fa-external-link"></i></a>
+        <ul class="inline-list">
+          <li><i class="fa fa-plus" ng-if="owner.marked_contests.indexOf({contest_id: 'contest.id'}) == null && feed.rule && feed.ended_at > Date.getTime()"></i></li>
+          <li><a href="/app/#/feed/{{feed._id.$oid}}" ng-if="feed.rule"><i class="fa fa-external-link"></i></a></li>
+          <li><a href="/app/#/feed/{{feed.contest_id.$oid}}" ng-if="feed.point"><i class="fa fa-external-link"></i></a></li>
+        </ul>
       </li>
     </ul>
   </li>

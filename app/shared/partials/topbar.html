@@ -18,7 +18,7 @@
       <ul class="off-canvas-list">
         <li><label><i class="fa fa-home fa-2x"></i></label></li>
         <li class="text-center"><a href="/app/#/{{owner._id.$oid}}"><img class="circular" ng-src="{{owner.profile.avatar}}"/></a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a ng-href="/app/#/logout">Log out</a></li>
       </ul>
     </aside>
 
@@ -40,7 +40,10 @@
 <div class="bottom-bar">
   <div>
       <ul class="inline-list">
-        <li><i class="fa fa-pencil-square-o"></i><li>
+        <li>
+          <a ng-href="/app/#/contest" ng-if="owner.gender === 'male'"><i class="fa fa-pencil-square-o"></i></a>
+          <a ng-href="/app/#/mark" ng-if="owner.gender === 'female'"><i class="fa fa-pencil-square-o"></i></a>
+        <li>
         <li>I</li>
         <li><a ng-href="/app/#/contests">Contest</a></li>
         <li>I</li>

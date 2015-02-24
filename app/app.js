@@ -5,6 +5,7 @@ angular.module('myApp', [
   'routes',
   'landingpage',
   'login',
+  'logout',
   'authentication',
   'storageservice',
   'currentuser',
@@ -17,10 +18,12 @@ angular.module('myApp', [
   'userinfo',
   'infinite-scroll',
   'contests',
+  'markcontests',
   'allcontests',
   'participations',
   'allparticipations',
-  'createcontest'
+  'createcontest',
+  'marked'
 ])
 	.run(function($rootScope, $state, Auth) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {

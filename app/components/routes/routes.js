@@ -32,12 +32,16 @@ angular.module('routes', ['ui.router', 'accesslevels'])
           access: AccessLevels.user
         }
       })
+      .state('user.logout', {
+        url: '/logout',
+        controller: 'LogoutCtrl',
+      })
       .state('user.allcontests', {
         url: '/contests',
         controller: 'AllContestsCtrl',
         templateUrl: '/app/views/contests/allcontests.html',
       })
-      .state('user.createcontests', {
+       .state('user.createcontests', {
         url: '/contest',
         controller: 'CreateContestCtrl',
         templateUrl: '/app/views/contests/create_contest.html',
@@ -46,6 +50,11 @@ angular.module('routes', ['ui.router', 'accesslevels'])
         url: '/participations',
         controller: 'AllParticipationsCtrl',
         templateUrl: '/app/views/participations/allparticipations.html',
+      })
+      .state('user.marked', {
+        url: '/mark',
+        controller: 'MarkedCtrl',
+        templateUrl: '/app/views/marked_contest/marked.html',
       })
       .state('user.allfeeds', {
         url: '/feeds',

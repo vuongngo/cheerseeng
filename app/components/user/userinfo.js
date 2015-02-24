@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('userinfo', [])
-	.controller('UserInfoCtrl', function($scope, Userinfos) {
+	.controller('UserInfoCtrl', function($scope, Userinfos, Auth, $state) {
+			$scope.Date = new Date();
 			Userinfos.getUser().success(function(result) {
 				$scope.owner = result
 			}).error(function(err) {
