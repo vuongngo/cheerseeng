@@ -1,7 +1,7 @@
 <ul infinite-scroll="moreContests()" infinite-scroll-disabled="busy" infinite-scroll-distance='2' class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
   <li ng-repeat="contest in contests" class="feed">
     <div class="row">
-      <div class="small-4 columns"><a href="/app/#/{{contest.u.u_id}}"><img class="circular" ng-src="{{contest.u.avatar}}"/></a></div>
+      <div class="small-4 columns"><a href="/app/#/user/{{contest.u.u_id}}"><img class="circular" ng-src="{{contest.u.avatar}}"/></a></div>
       <div class="small-8 columns">
           <p class="text-right post-label" ng-show="contest.ended_at > Date.getTime()"><b>Countdown:</b> <timer end-time="contest.ended_at*1000"> {{days}} days, {{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer></p>
           <p class="text-right post-label" ng-show="contest.ended_at < Date.getTime()">Ended</p>
@@ -19,7 +19,7 @@
       <li class="right">
         <ul class="inline-list">
           <li><i class="fa fa-plus" ng-click="markContest(contest._id.$oid)" ng-if="owner.marked_contests.indexOf({contest_id: 'contest.id'}) == null && contest.ended_at > Date.getTime()"></i></li>
-          <li><a href="/app/#/contest/{{contest._id.$oid}}"><i class="fa fa-external-link"></i></a></li>
+          <li><a href="/app/#/feed/{{contest._id.$oid}}"><i class="fa fa-external-link"></i></a></li>
         </ul>
       </li>
     </ul>

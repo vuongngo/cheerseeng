@@ -56,13 +56,18 @@ angular.module('routes', ['ui.router', 'accesslevels'])
         controller: 'MarkedCtrl',
         templateUrl: '/app/views/marked_contest/marked.html',
       })
+      .state('user.join', {
+        url: '/join/:id',
+        controller: 'CreateParticipationCtrl',
+        templateUrl: '/app/views/participations/create_participation.html',
+      })      
       .state('user.allfeeds', {
         url: '/feeds',
         controller: 'AllFeedsCtrl',
         templateUrl: '/app/views/feeds/allfeeds.html',
       })
       .state('user.userfeeds', {
-        url: '/:id',
+        url: '/user/:id',
         controller: 'UserFeedsCtrl',
         templateUrl: '/app/views/feeds/userfeeds.html',
       })
@@ -70,6 +75,11 @@ angular.module('routes', ['ui.router', 'accesslevels'])
         url: '/feed/:id',
         controller: 'RelatedFeedsCtrl',
         templateUrl: '/app/views/feeds/relatedfeeds.html',
+      })
+      .state('user.ownerfeeds', {
+        url: '/:id',
+        controller: 'OwnerFeedsCtrl',
+        templateUrl: '/app/views/user/user.html',
       });
 
     $urlRouterProvider.otherwise("/feeds");

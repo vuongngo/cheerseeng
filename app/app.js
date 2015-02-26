@@ -23,7 +23,11 @@ angular.module('myApp', [
   'participations',
   'allparticipations',
   'createcontest',
-  'marked'
+  'createparticipation',
+  'marked',
+  'angularFileUpload', 
+  'ownerfeeds',
+  'aws'
 ])
 	.run(function($rootScope, $state, Auth) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {

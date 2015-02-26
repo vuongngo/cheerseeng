@@ -23,14 +23,4 @@ angular.module('userfeeds', ['userinfo'])
 				$scope.errors = res;
 			});
 		};
-		$scope.updateProfile = function() {
-			Userinfos.updateUser($scope.user.profile._id.$oid, $scope.user.profile).success(function(result) {
-				$scope.profile = result;
-				$scope.edit.age = true;
-				$scope.edit.interest = true;
-				$scope.edit.location = true;
-			}).error(function(res) {
-				$scope.errors = res;
-			})
-		};
 	});
