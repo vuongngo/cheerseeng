@@ -48,7 +48,6 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 				for (var i = 0; i < files.length; i++) {
 					var file = files[i];
 
-					var canvas = document.createElement("canvas");
 					var img = document.createElement("img");
 					var reader = new FileReader();  
 					reader.onload = function(e)
@@ -60,8 +59,8 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 					        var ctx = canvas.getContext("2d");
 					        ctx.drawImage(img, 0, 0);
 
-					        var MAX_WIDTH = 100;
-					        var MAX_HEIGHT = 100;
+					        var MAX_WIDTH = 200;
+					        var MAX_HEIGHT = 200;
 					        var width = img.width;
 					        var height = img.height;
 
@@ -81,8 +80,9 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 					        var ctx = canvas.getContext("2d");
 					        ctx.drawImage(img, 0, 0, width, height);
 
-					        var dataurl = canvas.toDataURL("image/png");
+					        var dataurl = canvas.toDataURL("image/jpeg", 0.7);
 							var blob = dataURItoBlob(dataurl);
+					        $scope.user.profile.avatar = dataurl;
 
 							$upload.upload({
 								url: 'http://cheerseeng.s3.amazonaws.com/',
@@ -111,7 +111,6 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 								$scope.updateProfile();
 							}).error(function (err) {
 								console.log(err);
-								window.URL.revokeObjectURL(img.src);
 							});
 
 					    }
