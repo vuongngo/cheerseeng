@@ -24,7 +24,6 @@ angular.module('createparticipation', [])
 
 		    return new Blob([ia], {type:mimeString});
 		}
-		var upload =
 
 		$scope.policy = function() {
 			Aws.s3Token().success(function(result) {
