@@ -13,7 +13,8 @@
       <img ng-repeat="pic in feed.pic" ng-src="{{ pic }}"/>
     </div>
     <ul class="inline-list feed-comment">
-      <li><i class="fa fa-pencil-square-o"> Commend</i></li>
+      <li><i class="fa fa-pencil-square-o" ng-if="feed.ended_at" ng-click="feed.cid = feed.c_link_comment.comment_id.$oid"> Commend</i></li>
+      <li><i class="fa fa-pencil-square-o" ng-if="feed.point" ng-click="feed.pid = feed.p_link_comment.comment_id.$oid"> Commend</i></li>
       <li><i class="fa fa-comments-o"></i></li>
       <li><i class="fa fa-heart"></i></li>
       <li class="right">
@@ -24,6 +25,8 @@
         </ul>
       </li>
     </ul>
+    <div contest-commend ng-if="feed.cid" commendlink="feed.cid"></div>
+    <div participation-commend ng-if="feed.pid" commendlink="feed.pid"></div>
   </li>
 </ul>
 

@@ -27,7 +27,9 @@ angular.module('myApp', [
   'marked',
   'angularFileUpload', 
   'ownerfeeds',
-  'aws'
+  'aws',
+  'participation_commend',
+  'contest_commend'
 ])
 	.run(function($rootScope, $state, Auth) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
