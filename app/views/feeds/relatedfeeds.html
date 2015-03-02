@@ -11,10 +11,10 @@
       <img ng-repeat="pic in contest.pic" ng-src="{{ pic }}"/>
     </div>
     <ul class="inline-list contest-comment">
-      <li><i class="fa fa-pencil-square-o"> Commend</i></li>
-      <li><i class="fa fa-comments-o"></i></li>
+      <li><i class="fa fa-comments-o" ng-click="contest.cid = contest.c_link_comment.comment_id.$oid"><span class="notation" ng-show="contest.c_link_comment.count != 0"> {{contest.c_link_comment.count}}</span></i></li>
       <li><i class="fa fa-heart"></i></li>
     </ul>
+    <div contest-commend ng-if="contest.cid" commendlink="contest.cid"></div>
   </div>
 </div>
 
@@ -31,10 +31,10 @@
       <img ng-repeat="pic in participation.pic" ng-src="{{ pic }}"/>
     </div>
     <ul class="inline-list participation-comment">
-      <li><i class="fa fa-pencil-square-o"> Commend</i></li>
-      <li><i class="fa fa-comments-o"></i></li>
+      <li><i class="fa fa-comments-o" ng-if="participation.point" ng-click="participation.pid = participation.p_link_comment.comment_id.$oid"><span class="notation" ng-show="participation.p_link_comment.count != 0"> {{participation.p_link_comment.count}}</span></i></li>
       <li><i class="fa fa-heart"></i></li>
     </ul>
+    <div participation-commend ng-if="feed.pid" commendlink="feed.pid"></div>
   </li>
 </ul>
 

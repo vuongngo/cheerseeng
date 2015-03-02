@@ -20,12 +20,22 @@ angular.module('contest_commend', [])
 			},
 			templateUrl: '/app/shared/partials/commend.html',
 			controller: function($scope, ContestComments) {
+				$scope.getcomments = function (page) {
+					ContestComments.get($scope.cid, page).success(function(result) {
+						$scope.comments = $scope.comments.concat(result.comments);
+						$scope.total_page = result.meta.pagination.total_pages;
+					}).error(function(err) {
+						console.log(err);
+					});					
+				};
 				$scope.page = 1;
-				ContestComments.get($scope.cid, $scope.page).success(function(result) {
-					$scope.comments = result.comments;
-				}).error(function(err) {
-					console.log(err);
-				});
+				$scope.comments = [];
+				$scope.getcomments($scope.page);
+				$scope.morecomments = function () {
+					if ($scope.page < $scope.total_page) {				
+						$scope.page ++ ;
+						$scope.getcomments($scope.page);};
+				};
 
 				$scope.c_comment = {};
 				$scope.submit = function() {

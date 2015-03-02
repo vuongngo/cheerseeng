@@ -11,12 +11,12 @@
       <img ng-repeat="pic in participation.pic" ng-src="{{ pic }}"/>
     </div>
     <ul class="inline-list participation-comment">
-      <li><i class="fa fa-pencil-square-o"> Commend</i></li>
-      <li><i class="fa fa-comments-o"></i></li>
+      <li><i class="fa fa-comments-o" ng-if="participation.point" ng-click="participation.pid = participation.p_link_comment.comment_id.$oid"><span class="notation" ng-show="participation.p_link_comment.count != 0"> {{participation.p_link_comment.count}}</span></i></li>
       <li><i class="fa fa-heart"></i></li>
       <li class="right">
         <a href="/app/#/feed/{{participation.contest_id.$oid}}"><i class="fa fa-external-link"></i></a>
       </li>
     </ul>
+    <div participation-commend ng-if="participation.pid" commendlink="participation.pid"></div> 
   </li>
 </ul>
