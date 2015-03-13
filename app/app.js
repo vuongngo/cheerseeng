@@ -29,7 +29,8 @@ angular.module('myApp', [
   'ownerfeeds',
   'aws',
   'participation_commend',
-  'contest_commend'
+  'contest_commend',
+  'btford.socket-io'
 ])
 	.run(function($rootScope, $state, Auth) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
@@ -39,4 +40,13 @@ angular.module('myApp', [
 				$state.go('anon.login');
 			}
 		});
-	});
+	})
+  .factory('mySocket', function(socketFactory) {
+    var myIoSocket = io.connect('http://localhost:8080');
+
+    var mySocket = socketFactory({
+      ioSocket: myIoSocket
+    });
+
+    return mySocket;
+  });
