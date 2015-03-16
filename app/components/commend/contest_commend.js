@@ -19,7 +19,7 @@ angular.module('contest_commend', [])
 				cid: '=commendlink'
 			},
 			templateUrl: '/app/shared/partials/commend.html',
-			controller: function($scope, ContestComments) {
+			controller: function($scope, ContestComments, socket) {
 				$scope.getcomments = function (page) {
 					ContestComments.get($scope.cid, page).success(function(result) {
 						$scope.comments = $scope.comments.concat(result.comments);
@@ -44,10 +44,15 @@ angular.module('contest_commend', [])
 					$scope.c_comment.created_at = Date.parse(d);
 					ContestComments.create($scope.cid, $scope.c_comment).success(function(result) {
 						console.log(result);
+						$scope.comment = null;
 					}).error(function(err){
 						console.log(err);
 					});					
-				}
+				};
+				socket.on('contest-comment/' + $scope.cid, function (ev, data) {
+					console.log(ev);
+					$scope.comments = $scope.comments.concat(ev);
+				});
 			}
 		};
 	})

@@ -41,7 +41,7 @@ angular.module('myApp', [
 			}
 		});
 	})
-  .factory('mySocket', function(socketFactory) {
+  .factory('socket', function(socketFactory) {
     var myIoSocket = io.connect('http://localhost:8080');
 
     var mySocket = socketFactory({

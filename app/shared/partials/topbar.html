@@ -49,7 +49,15 @@
         <li>I</li>
         <li><a ng-href="/app/#/participations">Participation</a></li>
         <li>I</li>
-        <li><i class="fa fa-bell"></i></li>
+        <li><i class="fa fa-bell" ng-if="count == 0"></i><i class="fa fa-bell" ng-if="count != 0" style="color: yellow" ng-click="clear()">{{ count }}</i></li>
       </ul>
     </div>
+</div>
+<div id="overlay" ng-show="view == true">
+     <div id="notification-overlay">
+          <div ng-repeat="notification in notifications" ng-repeat="comment in comments | orderBy: 'created_at' ">
+            <img class="commendpic" ng-src="{{notification.avatar}}"/>: {{ notification.post }}
+          </div>
+          <div class="close-notification" ng-click="view = false">Close</div> 
+     </div>
 </div>
