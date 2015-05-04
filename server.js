@@ -17,7 +17,7 @@ function handler (req, res) {
 	} );
 }
 
-redis.subscribe('contest-comment', 'user-notification');
+redis.subscribe('contest-comment', 'user-notification', 'feed-update');
 
 io.on('connection', function(socket) {
 	console.log('Client connnected!');
@@ -27,10 +27,16 @@ io.on('connection', function(socket) {
 			console.log(mes);
 			socket.emit('contest-comment/' + mes.cid, mes);
 		};
+		if (mes.pid) {
+			socket.emit('participation-comment/' + mes.pid, mes);
+		};
 		if (mes.user_id) {
 			console.log(mes.user_id);
 			socket.emit('user-notification/' + mes.user_id, mes);
 		};
+		if (mes.comment_count) {
+			socket.emit('feed-update', mes);
+		}
 	});
 });
 

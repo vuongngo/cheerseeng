@@ -1,7 +1,7 @@
 'user strict';
 
 angular.module('allfeeds', [])
-	.controller('AllFeedsCtrl', function($scope, Feeds, LocalService) {
+	.controller('AllFeedsCtrl', function($scope, Feeds, LocalService, socket) {
 		$scope.busy = false;
 		$scope.feeds = [];
 		var page = 0;
@@ -22,4 +22,15 @@ angular.module('allfeeds', [])
 				};
 			});
 		};
+		socket.on('feed-update', function (ev, data) {
+			console.log(ev);
+			for (i = 0; i < $scope.feeds.length; i ++) {
+				if ($scope.feeds[i]._id.$oid == ev.cid) {
+					if (ev.comment_count) {
+						$scope.feeds[i].c_link_comment.count = ev.comment_count;
+						} else { $scope.feeds[i].c_link_like.count = ev.like_count ;
+						}
+					}
+				}
+			});
 	});

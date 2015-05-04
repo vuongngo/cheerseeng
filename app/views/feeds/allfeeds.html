@@ -18,7 +18,7 @@
       <li><i class="fa fa-heart"><span class="notation" ng-show="feed.c_link_like.count != 0"> {{feed.c_link_like.count}}</span><span class="notation" ng-show="feed.p_link_like.count != 0"> {{feed.p_link_like.count}}</span></i></li>
       <li class="right">
         <ul class="inline-list">
-          <li><i class="fa fa-plus" ng-if="owner.marked_contests.indexOf({contest_id: 'contest.id'}) == null && feed.rule && feed.ended_at > Date.getTime()"></i></li>
+          <li><i class="fa fa-plus" ng-if="owner.marked_contests.indexOf({contest_id: contest.id}) && feed.rule && feed.ended_at > Date.getTime()"></i></li>
           <li><a href="/app/#/feed/{{feed._id.$oid}}" ng-if="feed.rule"><i class="fa fa-external-link"></i></a></li>
           <li><a href="/app/#/feed/{{feed.contest_id.$oid}}" ng-if="feed.point"><i class="fa fa-external-link"></i></a></li>
         </ul>
