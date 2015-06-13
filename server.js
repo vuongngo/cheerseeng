@@ -1,21 +1,23 @@
-var app = require('http').createServer(handler);
-	io = require('socketio')(app);
-	fs = require('fs');
+var http = require('http');
+	express = require('express');
+    app = module.exports.app = express();
+	path =require('path');
 	redis = require('redis').createClient();
+	app.use(express.static(path.join(__dirname, 'public')));
 
-app.listen(8080);
+app.get('/', function(req, res) {
+	res.sendFile('index.html');
+});
 
-function handler (req, res) {
-	fs.readFile('app/index.html', function(err, data) {
-		if (err) {
-			res.writeHead(500);
-			return res.ennd('Error loading index.html');
-		}
+var	io = require('socketio')(server);
 
-		res.writeHead(200);
-		res.end(data);
-	} );
-}
+var server = http.createServer(app);
+server.listen(8080, function() {
+	var host = server.address().address;
+	var port = server.address().port;
+
+	console.log(host, port);
+});
 
 redis.subscribe('contest-comment', 'user-notification', 'feed-update');
 

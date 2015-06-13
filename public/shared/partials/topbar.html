@@ -1,0 +1,63 @@
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
+
+      <section class="middle tab-bar-section">
+        <h1><a ng-href="/#/feeds" style="color:#ffffff"><span class="top-name" style="font-size: 1.5em">Cheersee</span></a> <i class="fa fa-search" style="margin-left: 1em; font-size: 130%"></i></h1>
+      </section>
+
+      <section class="right-small">
+        <a class="right-off-canvas-toggle" href="#"><i class="fa fa-venus-mars" style="padding: 7px; color: #ffffff; font-size: 180%"></i></a>
+      </section>
+    </nav>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label><i class="fa fa-home fa-2x"></i></label></li>
+        <li class="text-center"><a href="/#/{{owner._id.$oid}}"><img class="circular" ng-src="{{owner.profile.avatar}}"/></a></li>
+        <li><a ng-href="/#/logout">Log out</a></li>
+      </ul>
+    </aside>
+
+    <aside class="right-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>Users</label></li>
+        <li><a href="#">Hari Seldon</a></li>
+        <li><a href="#">...</a></li>
+      </ul>
+    </aside>
+
+    <section class="main-section" ui-view>
+    </section>
+
+  <a class="exit-off-canvas"></a>
+
+  </div>
+</div>
+<div class="bottom-bar">
+  <div>
+      <ul class="inline-list">
+        <li>
+          <a ng-href="/#/mark" ng-if="owner.gender === 'male'"><i class="fa fa-pencil-square-o"></i></a>
+          <a ng-href="/#/contest" ng-if="owner.gender === 'female'"><i class="fa fa-pencil-square-o"></i></a>
+        <li>
+        <li>I</li>
+        <li><a ng-href="/#/contests">Contest</a></li>
+        <li>I</li>
+        <li><a ng-href="/#/participations">Participation</a></li>
+        <li>I</li>
+        <li><i class="fa fa-bell" ng-if="count == 0"></i><i class="fa fa-bell" ng-if="count != 0" style="color: yellow" ng-click="clear()">{{ count }}</i></li>
+      </ul>
+    </div>
+</div>
+<div id="overlay" ng-show="view == true">
+     <div id="notification-overlay">
+          <div ng-repeat="notification in notifications" ng-repeat="comment in comments | orderBy: 'created_at' ">
+            <img class="commendpic" ng-src="{{notification.avatar}}"/>: {{ notification.post }}
+          </div>
+          <div class="close-notification" ng-click="view = false">Close</div> 
+     </div>
+</div>

@@ -1,0 +1,22 @@
+<ul infinite-scroll="moreParticipations()" infinite-scroll-disabled="busy" infinite-scroll-distance='2' class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  <li ng-repeat="participation in participations" class="feed">
+    <div class="row">
+      <div class="small-4 columns"><a href="/#/user/{{participation.u.u_id}}"><img class="circular" ng-src="{{participation.u.avatar}}"/></a></div>
+      <div class="small-8 columns">
+          <p class="text-right post-label"><i class="fa fa-star-o fa-2x" ng-show="participation.winner_place === 1"></i> <b>Point:</b> {{ participation.point }}</p>
+      </div>
+    </div>
+          <p> {{ participation.post }}</p>
+    <div class="image-album" >
+      <img ng-repeat="pic in participation.pic" ng-src="{{ pic }}"/>
+    </div>
+    <ul class="inline-list participation-comment">
+      <li><i class="fa fa-comments-o" ng-if="participation.point" ng-click="participation.pid = participation.p_link_comment.comment_id.$oid"><span class="notation" ng-show="participation.p_link_comment.count != 0"> {{participation.p_link_comment.count}}</span></i></li>
+      <li><i class="fa fa-heart"></i></li>
+      <li class="right">
+        <a href="/#/feed/{{participation.contest_id.$oid}}"><i class="fa fa-external-link"></i></a>
+      </li>
+    </ul>
+    <div participation-commend ng-if="participation.pid" commendlink="participation.pid"></div> 
+  </li>
+</ul>

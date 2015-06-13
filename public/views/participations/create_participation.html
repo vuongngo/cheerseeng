@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="small-6 small-centered columns feed">	
+	<div class="row">
+      <div class="small-4 columns" ng-if="participation.point"><a href="/#/user/{{participation.u.u_id}}"><img class="circular" ng-src="{{owner.profile.avatar}}"/></a></div>
+      <div class="small-8 columns">
+          <p class="text-right post-label" ng-if="participation.point"><b>Point:</b> {{ participation.point }}</p>
+      </div>
+    </div>
+          <p> {{ participation.post }}</p>
+    <div class="image-album" >
+      <img ng-repeat="pic in pics" ng-src="{{ pic }}"/>
+    </div>
+  </div>
+</div>
+
+<div class="row regform">
+  <div class="large-6 medium-9 medium-centered columns">
+    <h2>Hura, be readyy for a date</h2>
+    <form name="participationForm" novalidate class="css-form">
+      <input type="text" placeholder="post" ng-model="participation.post" required /><br />
+      <input type="text" placeholder="point" ng-model="participation.point" required /><br />
+      <div class="text-center">
+   	  	<i ng-file-select ng-model="files" class="fa fa-camera-retro fa-3x" ng-click="policy()" ng-multiple="true"></i>
+   	  	<br/>
+      	<input type="submit" ng-click="create()" value="Lets rock" class="button small radius pinkflower" data-ng-disabled="!participation.post + !participation.point" type="submit"/>
+      </div>
+    </form>
+  </div>
+</div>
