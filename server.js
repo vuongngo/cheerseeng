@@ -1,17 +1,17 @@
-var http = require('http');
-	express = require('express');
-    app = module.exports.app = express();
-	path =require('path');
-	redis = require('redis').createClient();
+var express = require('express');
+var	app = express();
+var server = require('http').Server(app);
+var	io = require('socketio')(server);
+var	path =require('path');
+var	redis = require('redis').createClient();
+
 	app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
 	res.sendFile('index.html');
 });
 
-var	io = require('socketio')(server);
 
-var server = http.createServer(app);
 server.listen(8080, function() {
 	var host = server.address().address;
 	var port = server.address().port;

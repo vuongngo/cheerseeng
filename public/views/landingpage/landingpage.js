@@ -18,7 +18,7 @@ angular.module('landingpage', [])
 				scope.$watch(attr.ngModel, function(value) {
 					if(toId) clearTimeout(toId);
 					toId = setTimeout(function(){
-						$http.get('http://api.cheersee.dev/validations?user_email=' + value, {
+						$http.get('http://api.cheerseeapi.dev/validations?user_email=' + value, {
 	    					headers: {'Accept': 'application/vnd.cheersee.v1'}
 						}).success(function(data){
 							if (data["isValid"] == true) {

@@ -52,6 +52,7 @@ background-color: #FFFDB7;
 /*User pages*/
 .main-section {
 	padding: 0.7em;
+	min-height: 700px;
 	background-color: #FFE4EA;
 }
 .feed {

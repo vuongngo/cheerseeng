@@ -39,6 +39,9 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 				$scope.policy = result.policy;
 				$scope.signature = result.signature;
 				$scope.folder = result.folder;
+				console.log($scope.policy);
+				console.log($scope.signature);
+				console.log($scope.folder);
 			}).error(function(err) {
 			  console.log(err);
 			});
@@ -48,10 +51,10 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 				for (var i = 0; i < files.length; i++) {
 					var file = files[i];
 
-					var img = document.createElement("img");
 					var reader = new FileReader();  
 					reader.onload = function(e)
 					    {
+							var img = document.createElement("img");
 					        img.src = e.target.result;
 
 					        var canvas = document.createElement("canvas");
@@ -63,7 +66,7 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 					        var MAX_HEIGHT = 200;
 					        var width = img.width;
 					        var height = img.height;
-
+	
 					        if (width > height) {
 					          if (width > MAX_WIDTH) {
 					            height *= MAX_WIDTH / width;
@@ -79,7 +82,6 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 					        canvas.height = height;
 					        var ctx = canvas.getContext("2d");
 					        ctx.drawImage(img, 0, 0, width, height);
-
 					        var dataurl = canvas.toDataURL("image/jpeg", 0.7);
 							var blob = dataURItoBlob(dataurl);
 					        $scope.user.profile.avatar = dataurl;
@@ -94,7 +96,7 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 		                            },
 								fields: {
 									key:  $scope.folder + '/avatar/' + file.name,
-									AWSAccessKeyId: 'AKIAJ7U3RJ5DTBULBWFQ',
+									AWSAccessKeyId: 'xxx',
 									acl: 'private',
 									policy: $scope.policy,
 									signature: $scope.signature,
@@ -105,11 +107,14 @@ angular.module('ownerfeeds', ['userinfo', 'angularFileUpload'])
 							}).progress(function (evt) {
 								var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 								console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+								console.log("step 2");
 							}).success(function (data, status, headers, config) {
 								console.log(headers('Location'));
 								$scope.user.profile.avatar = headers('Location');
 								$scope.updateProfile();
+								console.log("step 3");
 							}).error(function (err) {
+								console.log("step 4");
 								console.log(err);
 							});
 
